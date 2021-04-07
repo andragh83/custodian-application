@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { archiveTask } from "../../redux/actions";
 import MainWrapper from "../templates/mainWrapper";
+import ControlsWrapper from "../templates/controlsWrapper";
+import ContentWrapper from "../templates/contentWrapper";
 import HeaderImage from '../atoms/image';
+import Button from '../atoms/buttons';
 import image from '../../assets/images/garage.jpg';
+import icon from '../../assets/icons/archive.svg';
 
 // Dont worry about mobile UI. Pretend this is only for Desktop.
 // Hence why the media query below has been added.
@@ -37,6 +41,23 @@ class Home extends React.Component {
     <DesktopPageContainer>    
       <MainWrapper>
         <HeaderImage src={image}/>
+        <ControlsWrapper>
+          <Button type='standard'>
+            Create task
+          </Button>
+          <Button type='dark'>
+            Create task
+          </Button>
+          <Button type='light'>
+            Create task
+          </Button>
+          <Button type='icon' icon={icon}>
+            Archive the task
+          </Button>
+        </ControlsWrapper>
+        <ContentWrapper>
+          
+        </ContentWrapper>
         
         {/* <div>This is the main page</div>
 
