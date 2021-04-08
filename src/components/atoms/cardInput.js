@@ -19,7 +19,7 @@ const Input = styled.div`
         display: block;
         position: relative;
         padding-left: 25px;
-        ${'' /* margin-bottom: 12px; */}
+        
         cursor: pointer;
         font-size: 22px;
         -webkit-user-select: none;
@@ -40,7 +40,7 @@ const Input = styled.div`
     /* Create a custom checkbox */
     .checkmark {
         position: absolute;
-        top: 0;
+        top: 5px;
         left: 0;
         height: 20px;
         width: 20px;
@@ -88,6 +88,7 @@ const Input = styled.div`
     .label {
         margin-left: 10px;
         font-size: .8rem;
+        padding-bottom: 10px !important;
     }
 
     .arrow {
