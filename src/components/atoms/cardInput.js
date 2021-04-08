@@ -111,7 +111,7 @@ const CardInput = ({ onChange, completed }) => (
                     checked={ completed ? "checked" : ""} 
                     onChange={onChange}            
                 />
-                <span class="checkmark"></span> 
+                <span className="checkmark"></span> 
                 <span className="label">{ !completed ? 'outstanding' : 'completed'}</span>  
             </label>
 
