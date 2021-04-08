@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
 import { connect } from "react-redux";
-import { archiveTask } from "../../redux/actions";
+import { archiveTask, toggleTask } from "../../redux/actions";
 import MainWrapper from "../templates/mainWrapper";
 import ControlsWrapper from "../templates/controlsWrapper";
 import ContentWrapper from "../templates/contentWrapper";
 import HeaderImage from '../atoms/image';
 import Button from '../atoms/buttons';
 import image from '../../assets/images/garage.jpg';
-import icon from '../../assets/icons/archive.svg';
+import Card from '../molecules/card';
+
 
 // Dont worry about mobile UI. Pretend this is only for Desktop.
 // Hence why the media query below has been added.
@@ -28,36 +29,42 @@ const DesktopPageContainer = styled.div`
 
 const actionCreators = {
   archiveTask,
+  toggleTask
 }
 
 
 const mapStateToProps = state => {
-  return { tasks: state.tasks };
+  return { tasks: state };
 };
 
 class Home extends React.Component {
   render() {
+
+    const { archiveTask, toggleTask, tasks } = this.props;
+
     return (
     <DesktopPageContainer>    
       <MainWrapper>
         <HeaderImage src={image}/>
-        <ControlsWrapper>
-          <Button type='standard'>
+        <ControlsWrapper>          
+          <Button theme='dark'>
             Create task
-          </Button>
-          <Button type='dark'>
-            Create task
-          </Button>
-          <Button type='light'>
-            Create task
-          </Button>
-          <Button type='icon' icon={icon}>
-            Archive the task
           </Button>
         </ControlsWrapper>
         <ContentWrapper>
-          
+            {tasks.map(task => 
+              <Card 
+                key={task.id}
+                completed = {task.completed}
+                onChange = {() => toggleTask(task.id)}
+                title = {task.title}
+                body = {task.body}
+                archive = {() => archiveTask(task.id)}
+                // reminder = {}
+              />
+            )}
         </ContentWrapper>
+        
         
         {/* <div>This is the main page</div>
 

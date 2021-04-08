@@ -4,10 +4,11 @@ import styled from 'styled-components';
 const StandardButton = styled.button`   
         
     padding: 12px 32px;
+    max-width: 180px;
     display: flex;
     justify-content: space-around;
     ${'' /* align-itmes: center; */}
-    border: 1px solid rgb(0, 132, 137);
+    border: 1px solid rgb(32, 147, 152);
     border-radius: 4px;
     outline: none;
     background-color: transparent;
@@ -17,7 +18,7 @@ const StandardButton = styled.button`
 `
 const DarkButton = styled(StandardButton)`   
                 
-    background-color: rgb(0, 132, 137);   
+    background-color: rgb(32, 147, 152);   
     color: #FFFFFF;        
     font-weight: 700;
 
@@ -25,15 +26,16 @@ const DarkButton = styled(StandardButton)`
 
 const LightButton = styled(StandardButton)`   
         
-    background-color: rgba(0, 132, 137, .1);
+    background-color: rgba(32, 147, 152, .1);
     font-weight: 400;   
 
 `
 const IconButton = styled(StandardButton)`   
         
     text-transform: lowercase;
-    padding: 8px 32px;
+    padding: 8px 25px;
     line-height: 1.5rem;
+    justify-content: flex-start;
 
 `
 
@@ -42,8 +44,9 @@ const Icon = styled.img`
 `
 
 
-const Button = ({ type, icon, onClick, children }) => (
-    type === 'icon' ? (
+const Button = ({ theme, icon, onClick, children }) => (
+    
+    theme === 'icon' ? (
         <IconButton 
             onClick = {onClick}    
             icon={icon ? true: false}        
@@ -52,12 +55,13 @@ const Button = ({ type, icon, onClick, children }) => (
             <span>{children}</span>
         </IconButton>
 
-    ) : type === 'dark' ? (
+    ) : theme === 'dark' ? (
 
         <DarkButton onClick = {onClick} >
             {children}
         </DarkButton>
-    ) : type === 'light' ? (
+
+    ) : theme === 'light' ? (
         <LightButton onClick = {onClick} >
             {children}
         </LightButton>

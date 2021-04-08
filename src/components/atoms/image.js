@@ -4,8 +4,7 @@ import styled from 'styled-components';
 const ImageContainer = styled.div`   
 
     width: 100%;
-    ${'' /* height: 270px; */}
-    height: 35%;
+    height: 275px;
     margin: 0;  
 
     .header_image {        

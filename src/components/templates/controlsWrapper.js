@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`   
     
-    height: 150px;
+    height: 170px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
