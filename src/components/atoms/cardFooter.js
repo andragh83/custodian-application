@@ -5,7 +5,7 @@ const FooterWrapper = styled.div`
         
     display: grid;
     grid-template-columns: 180px 180px;
-    grid-gap: 10px;
+    grid-gap: 15px;
     padding: 30px 30px;   
     border: none;      
     background-color: transparent;    

@@ -18,14 +18,14 @@ const CardWrapper = styled.div`
     color: rgba(46, 49, 49, 1);
 
     .title {
-        font-size: 1.1em;     
-        font-weight: 700;    
-        margin-bottom: 20px;       
+        font-size: 16px;     
+        font-weight: 500;    
+        margin-bottom: 10px;      
     }
 
     .body {
-        font-size: .9rem;
-        line-height: 1.5rem;
+        font-size: 14px;
+        line-height: 1.2rem;
         text-align: left;
     }
 `

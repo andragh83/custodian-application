@@ -6,14 +6,14 @@ const StandardButton = styled.button`
     padding: 12px 32px;
     max-width: 180px;
     display: flex;
-    justify-content: space-around;
-    ${'' /* align-itmes: center; */}
+    justify-content: space-around;   
     border: 1px solid rgb(32, 147, 152);
     border-radius: 4px;
     outline: none;
     background-color: transparent;
     color: rgb(0, 132, 137);
     text-transform: uppercase;
+    cursor: pointer;
 
 `
 const DarkButton = styled(StandardButton)`   

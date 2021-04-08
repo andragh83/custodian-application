@@ -89,6 +89,7 @@ const Input = styled.div`
         margin-left: 10px;
         font-size: .8rem;
         padding-bottom: 10px !important;
+        letter-spacing: -1px;
     }
 
     .arrow {
