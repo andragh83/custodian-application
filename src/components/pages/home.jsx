@@ -38,7 +38,6 @@ const actionCreators = {
   setDisplayCriteria,
 }
 
-
 const mapStateToProps = state => {
   return { tasks: state.tasks, displayCriteria: state.displayTasks.displayCriteria };
 };
@@ -55,7 +54,11 @@ class Home extends React.Component {
       displayCriteria
     } = this.props;
 
-    console.log(displayCriteria);
+    const filteredTasks = displayCriteria === "current" ?
+                            tasks.filter(task => task.archived === false) 
+                        : displayCriteria === "archived" ?
+                            tasks.filter(task => task.archived === true) 
+                        : tasks;
 
     return (
     <DesktopPageContainer>    
@@ -68,11 +71,11 @@ class Home extends React.Component {
           showAll={() => setDisplayCriteria("")}
         />
         <GridWrapper>
-            { displayCriteria === "current" ?
-            tasks.filter(task => task.archived === false).map(task => 
+            { 
+            filteredTasks.map(task => 
               <Card 
                 key={task.id}
-                completed = {task.completed}
+                isComplete = {task.completed}
                 onChange = {() => toggleTask(task.id)}
                 title = {task.title}
                 body = {task.body}
@@ -80,43 +83,9 @@ class Home extends React.Component {
                 isArchived = {task.archived}
                 // reminder = {}
               />
-            ) : displayCriteria === "archived" ?
-            tasks.filter(task => task.archived === true).map(task => 
-              <Card 
-                key={task.id}
-                completed = {task.completed}
-                onChange = {() => toggleTask(task.id)}
-                title = {task.title}
-                body = {task.body}
-                archive = {() => archiveTask(task.id)}
-                isArchived = {task.archived}
-                // reminder = {}
-              />
-            ) : tasks.map(task => 
-              <Card 
-                key={task.id}
-                completed = {task.completed}
-                onChange = {() => toggleTask(task.id)}
-                title = {task.title}
-                body = {task.body}
-                archive = {() => archiveTask(task.id)}
-                isArchived = {task.archived}
-                // reminder = {}
-              />
-            )
+              )
              }
         </GridWrapper>
-        
-        
-        {/* <div>This is the main page</div>
-
-        <button onClick={() => {
-        this.props.archiveTask(3)
-      }}>
-        Redux action example: by clicking this, you archive the task of ID 3. 
-        </button> */}
-
-      {/* On clicking, check what happens in the Redux Dev Tools. It is going to be helpful for your own debugging. */}      
       </PageWrapper>  
     </DesktopPageContainer>)
   }

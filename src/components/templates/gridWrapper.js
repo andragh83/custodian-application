@@ -10,7 +10,6 @@ const Wrapper = styled.div`
     justify-items: streched; 
     grid-column-gap: 100px;
     grid-row-gap: 60px;
-}
 
 `
 const GridWrapper = ({ children }) => (

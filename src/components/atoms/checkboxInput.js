@@ -2,15 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Input = styled.div`   
-    position: relative;    
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 30px;
-    align-itmes: center;
-    border: none;
-    border-bottom: 1px solid #ccc;    
-    background-color: transparent;
-    color: ${({ completed }) => completed? "rgb(32, 147, 152)" : "#FF3F40"}; 
+    
+    color: ${({ isChecked }) => isChecked? "rgb(32, 147, 152)" : "#FF3F40"}; 
     text-transform: lowercase;
     font-weight: 400; 
     font-size: .8em;
@@ -92,36 +85,21 @@ const Input = styled.div`
         letter-spacing: -1px;
     }
 
-    .arrow {
-        margin-top: 10px;
-        width: 0.5em;
-        height: 0.5em;
-        border-right: 1px solid rgb(32, 147, 152);
-        border-top: 1px solid rgb(32, 147, 152);
-        transform: rotate(45deg);
-    }
-
 `
 
-const CheckboxInput = ({ onChange, completed }) => (
+const CheckboxInput = ({ onChange, isChecked }) => (
    
-        <Input completed={ completed }>
+        <Input isChecked ={ isChecked }>
             <label className="checkbox">                
                 <input                     
                     type="checkbox" 
                     name="cardInput"                 
-                    checked={ completed ? "checked" : ""} 
+                    checked={ isChecked ? "checked" : ""} 
                     onChange={onChange}            
                 />
                 <span className="checkmark"></span> 
-                <span className="label">{ !completed ? 'outstanding' : 'completed'}</span>  
+                <span className="label">{ !isChecked ? 'outstanding' : 'completed'}</span>  
             </label>
-
-                {/* we can replace the bellow chevron coded in css with an icon and put it inside a button
-                but since there are no such icons in the assets folder, I just put it here like this
-                to match the design */}
-
-                <i className="arrow"></i>            
         </Input>             
 )
 export default CheckboxInput;

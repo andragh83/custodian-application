@@ -12,10 +12,10 @@ const FooterWrapper = styled.div`
 
 `
 
-const CardFooter = ({ children }) => (
+const CardFooterWrapper = ({ children }) => (
    
         <FooterWrapper>
             {children}
         </FooterWrapper>          
 )
-export default CardFooter;
+export default CardFooterWrapper;

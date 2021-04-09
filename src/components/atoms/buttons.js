@@ -14,6 +14,12 @@ const StandardButton = styled.button`
     color: rgb(0, 132, 137);
     text-transform: uppercase;
     cursor: pointer;
+    :hover {
+        box-shadow: -2px -2px 5px 0 rgba(32, 147, 152, .3), 2px 2px 5px 0 rgba(32, 147, 152, .3);    
+    }
+    :active {
+            transform: scale(0.98);
+    }
 
 `
 const DarkButton = styled(StandardButton)`   

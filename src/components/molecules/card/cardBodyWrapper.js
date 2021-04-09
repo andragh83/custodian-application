@@ -14,10 +14,10 @@ const BodyWrapper = styled.div`
 
 `
 
-const CardBody = ({ children }) => (
+const CardBodyWrapper = ({ children }) => (
    
         <BodyWrapper>
             {children}
         </BodyWrapper>          
 )
-export default CardBody;
+export default CardBodyWrapper;

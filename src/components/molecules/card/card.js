@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import CheckboxInput from '../../atoms/checkboxInput';
-import CardBody from './cardBody';
-import CardFooter from './cardFooter';
+import Arrow from '../../atoms/arrow';
+import CardHeaderWrapper from './cardHeaderWrapper';
+import CardBodyWrapper from './cardBodyWrapper';
+import CardFooterWrapper from './cardFooterWrapper';
 import Button from '../../atoms/buttons';
 import archiveIcon from '../../../assets/icons/archive.svg';
 import reminderIcon from '../../../assets/icons/reminder.svg';
@@ -30,14 +32,20 @@ const CardWrapper = styled.div`
     }
 `
 
-const Card = ({ completed, onChange, title, body, archive, isArchived, reminder, isReminderSet }) => (
+const Card = ({ title, body, isComplete, onChange, archive, isArchived, reminder, isReminderSet }) => (
     <CardWrapper>
-        <CheckboxInput completed={completed} onChange={onChange}/>
-        <CardBody>
+
+        <CardHeaderWrapper>
+            <CheckboxInput isChecked={isComplete} onChange={onChange}/>
+            <Arrow />
+        </CardHeaderWrapper>
+        
+        <CardBodyWrapper>
             <div className="title">{title}</div>
             <div className="body">{body}</div>
-        </CardBody>
-        <CardFooter>
+        </CardBodyWrapper>
+
+        <CardFooterWrapper>
             {
                 !isArchived ?
                 <Button theme='iconLight' icon={archiveIcon} onClick = {archive}>
@@ -47,12 +55,12 @@ const Card = ({ completed, onChange, title, body, archive, isArchived, reminder,
                 <Button theme='dark' icon={archiveIcon} onClick = {archive}>
                     Archived
                 </Button>
-            }
-            
+            }            
             <Button theme='iconLight' icon={reminderIcon} onClick = {reminder}>
                 set a reminder
             </Button>
-        </CardFooter>
+        </CardFooterWrapper>
+
     </CardWrapper>
 )
 
