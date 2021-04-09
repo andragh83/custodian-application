@@ -103,7 +103,7 @@ const Input = styled.div`
 
 `
 
-const CardInput = ({ onChange, completed }) => (
+const CheckboxInput = ({ onChange, completed }) => (
    
         <Input completed={ completed }>
             <label className="checkbox">                
@@ -124,4 +124,4 @@ const CardInput = ({ onChange, completed }) => (
                 <i className="arrow"></i>            
         </Input>             
 )
-export default CardInput;
+export default CheckboxInput;

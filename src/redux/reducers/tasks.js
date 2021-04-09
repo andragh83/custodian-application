@@ -1,4 +1,8 @@
-import { ARCHIVE_TASK, TOGGLE_TASK } from '../actions/types'
+import { 
+    ARCHIVE_TASK, 
+    TOGGLE_TASK, 
+    CREATE_TASK,
+  } from '../actions/types'
 
 const initialState = [
     {
@@ -44,7 +48,7 @@ export default function tasks(state = initialState, action) {
         case ARCHIVE_TASK:
             return state.map((task) => {
                 if (task.id === action.id) {
-                    task.archived = !task.archived
+                    task.archived = true
                 }
 
                 return task
@@ -58,6 +62,9 @@ export default function tasks(state = initialState, action) {
 
             return task
         })
+
+        case CREATE_TASK:
+            return state
 
         default:
             return state

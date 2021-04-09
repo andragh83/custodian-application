@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const FooterWrapper = styled.div`   
         
-    display: grid;
-    grid-template-columns: 180px 180px;
-    grid-gap: 15px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
     padding: 30px 30px;   
     border: none;      
     background-color: transparent;    

@@ -13,10 +13,10 @@ const Wrapper = styled.div`
 }
 
 `
-const ContentWrapper = ({ children }) => (
+const GridWrapper = ({ children }) => (
     <Wrapper>
         { children }
     </Wrapper>
 )
 
-export default ContentWrapper;
+export default GridWrapper;

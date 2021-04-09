@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components';
 import { connect } from "react-redux";
-import { archiveTask, toggleTask } from "../../redux/actions";
-import MainWrapper from "../templates/mainWrapper";
-import ControlsWrapper from "../templates/controlsWrapper";
-import ContentWrapper from "../templates/contentWrapper";
+import { 
+  archiveTask, 
+  toggleTask, 
+  setDisplayCriteria,
+  createTask, 
+} from "../../redux/actions";
+import PageWrapper from "../templates/pageWrapper";
+import GridWrapper from "../templates/gridWrapper";
 import HeaderImage from '../atoms/image';
-import Button from '../atoms/buttons';
+import Controls from '../molecules/controls/controls';
 import image from '../../assets/images/garage.jpg';
-import Card from '../molecules/card';
+import Card from '../molecules/card/card';
 
 
 // Dont worry about mobile UI. Pretend this is only for Desktop.
@@ -29,30 +33,43 @@ const DesktopPageContainer = styled.div`
 
 const actionCreators = {
   archiveTask,
-  toggleTask
+  toggleTask,
+  createTask,
+  setDisplayCriteria,
 }
 
 
 const mapStateToProps = state => {
-  return { tasks: state };
+  return { tasks: state.tasks, displayCriteria: state.displayTasks.displayCriteria };
 };
 
 class Home extends React.Component {
   render() {
 
-    const { archiveTask, toggleTask, tasks } = this.props;
+    const { 
+      archiveTask, 
+      toggleTask, 
+      tasks, 
+      setDisplayCriteria,
+      createTask,
+      displayCriteria
+    } = this.props;
+
+    console.log(displayCriteria);
 
     return (
     <DesktopPageContainer>    
-      <MainWrapper>
+      <PageWrapper>
         <HeaderImage src={image}/>
-        <ControlsWrapper>          
-          <Button theme='dark'>
-            Create task
-          </Button>
-        </ControlsWrapper>
-        <ContentWrapper>
-            {tasks.map(task => 
+        <Controls 
+          createTask={createTask}
+          showCurrentTasks={() => setDisplayCriteria("current")}
+          showArchivedTasks={() => setDisplayCriteria("archived")}
+          showAll={() => setDisplayCriteria("")}
+        />
+        <GridWrapper>
+            { displayCriteria === "current" ?
+            tasks.filter(task => task.archived === false).map(task => 
               <Card 
                 key={task.id}
                 completed = {task.completed}
@@ -60,10 +77,35 @@ class Home extends React.Component {
                 title = {task.title}
                 body = {task.body}
                 archive = {() => archiveTask(task.id)}
+                isArchived = {task.archived}
                 // reminder = {}
               />
-            )}
-        </ContentWrapper>
+            ) : displayCriteria === "archived" ?
+            tasks.filter(task => task.archived === true).map(task => 
+              <Card 
+                key={task.id}
+                completed = {task.completed}
+                onChange = {() => toggleTask(task.id)}
+                title = {task.title}
+                body = {task.body}
+                archive = {() => archiveTask(task.id)}
+                isArchived = {task.archived}
+                // reminder = {}
+              />
+            ) : tasks.map(task => 
+              <Card 
+                key={task.id}
+                completed = {task.completed}
+                onChange = {() => toggleTask(task.id)}
+                title = {task.title}
+                body = {task.body}
+                archive = {() => archiveTask(task.id)}
+                isArchived = {task.archived}
+                // reminder = {}
+              />
+            )
+             }
+        </GridWrapper>
         
         
         {/* <div>This is the main page</div>
@@ -75,7 +117,7 @@ class Home extends React.Component {
         </button> */}
 
       {/* On clicking, check what happens in the Redux Dev Tools. It is going to be helpful for your own debugging. */}      
-      </MainWrapper>  
+      </PageWrapper>  
     </DesktopPageContainer>)
   }
 };

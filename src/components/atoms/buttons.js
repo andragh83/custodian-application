@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StandardButton = styled.button`   
         
     padding: 12px 32px;
-    max-width: 180px;
+    max-width: 200px;
     display: flex;
     justify-content: space-around;   
     border: 1px solid rgb(32, 147, 152);
@@ -30,13 +30,18 @@ const LightButton = styled(StandardButton)`
     font-weight: 400;   
 
 `
-const IconButton = styled(StandardButton)`   
+const IconButtonLight = styled(StandardButton)`   
         
     text-transform: lowercase;
     padding: 8px 25px;
     line-height: 1.5rem;
     justify-content: flex-start;
 
+`
+const IconButtonDark = styled(IconButtonLight)`
+    background-color: rgb(32, 147, 152);   
+    color: #FFFFFF;        
+    font-weight: 700;
 `
 
 const Icon = styled.img`
@@ -46,14 +51,23 @@ const Icon = styled.img`
 
 const Button = ({ theme, icon, onClick, children }) => (
     
-    theme === 'icon' ? (
-        <IconButton 
+    theme === 'iconLight' ? (
+        <IconButtonLight 
             onClick = {onClick}    
             icon={icon ? true: false}        
         >            
             {icon && <Icon src={icon} />}
             <span>{children}</span>
-        </IconButton>
+        </IconButtonLight>
+
+    ) : theme === 'iconDark' ? (
+        <IconButtonDark 
+            onClick = {onClick}    
+            icon={icon ? true: false}        
+        >            
+            {icon && <Icon src={icon} />}
+            <span>{children}</span>
+        </IconButtonDark>
 
     ) : theme === 'dark' ? (
 
