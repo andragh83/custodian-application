@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const FooterWrapper = styled.div`   
+const CardFooterWrapper = styled.div`   
         
     display: inline-flex;
     flex-wrap: wrap;
@@ -12,10 +11,4 @@ const FooterWrapper = styled.div`
 
 `
 
-const CardFooterWrapper = ({ children }) => (
-   
-        <FooterWrapper>
-            {children}
-        </FooterWrapper>          
-)
 export default CardFooterWrapper;

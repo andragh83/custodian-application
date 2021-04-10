@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ControlsWrapper from './controlsWrapper';
-import Button from '../../atoms/buttons';
+import Button from '../../atoms/buttons/buttons';
 
 const LeftSide = styled.div`   
     display: inline-flex;
@@ -18,18 +18,18 @@ const RightSide = styled.div`
 const Controls = ( { createTask, showCurrentTasks, showArchivedTasks, showAll }) => (
     <ControlsWrapper>
         <LeftSide>
-            <Button theme='dark' onClick={showAll}>
+            <Button variant='dark' onClick={showAll}>
                 Show all
             </Button>
-            <Button theme='light' onClick={showCurrentTasks}>
+            <Button variant='light' onClick={showCurrentTasks}>
                 Current tasks
             </Button>
-            <Button theme='standard' onClick={showArchivedTasks}>
+            <Button variant='standard' onClick={showArchivedTasks}>
                 Archived tasks
             </Button>            
         </LeftSide>
         <RightSide>        
-            <Button theme='dark' onClick={createTask}>
+            <Button variant='dark' onClick={createTask}>
                 Create task
             </Button>
         </RightSide>

@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const BodyWrapper = styled.div`   
+const CardBodyWrapper = styled.div`   
 
     max-width: 400px;        
     display: flex;
@@ -12,12 +11,5 @@ const BodyWrapper = styled.div`
     border: none;      
     background-color: transparent;    
 
-`
-
-const CardBodyWrapper = ({ children }) => (
-   
-        <BodyWrapper>
-            {children}
-        </BodyWrapper>          
-)
+`    
 export default CardBodyWrapper;

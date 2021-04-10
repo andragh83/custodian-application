@@ -55,9 +55,9 @@ const Icon = styled.img`
 `
 
 
-const Button = ({ theme, icon, onClick, children }) => (
+const Button = ({ variant, icon, onClick, children }) => (
     
-    theme === 'iconLight' ? (
+    variant === 'iconLight' ? (
         <IconButtonLight 
             onClick = {onClick}    
             icon={icon ? true: false}        
@@ -66,7 +66,7 @@ const Button = ({ theme, icon, onClick, children }) => (
             <span>{children}</span>
         </IconButtonLight>
 
-    ) : theme === 'iconDark' ? (
+    ) : variant === 'iconDark' ? (
         <IconButtonDark 
             onClick = {onClick}    
             icon={icon ? true: false}        
@@ -75,13 +75,13 @@ const Button = ({ theme, icon, onClick, children }) => (
             <span>{children}</span>
         </IconButtonDark>
 
-    ) : theme === 'dark' ? (
+    ) : variant === 'dark' ? (
 
         <DarkButton onClick = {onClick} >
             {children}
         </DarkButton>
 
-    ) : theme === 'light' ? (
+    ) : variant === 'light' ? (
         <LightButton onClick = {onClick} >
             {children}
         </LightButton>

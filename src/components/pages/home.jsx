@@ -9,7 +9,7 @@ import {
 } from "../../redux/actions";
 import PageWrapper from "../templates/pageWrapper";
 import GridWrapper from "../templates/gridWrapper";
-import HeaderImage from '../atoms/image';
+import HeaderImage from '../atoms/images/image';
 import Controls from '../molecules/controls/controls';
 import image from '../../assets/images/garage.jpg';
 import Card from '../molecules/card/card';
@@ -24,7 +24,6 @@ import Card from '../molecules/card/card';
 const DesktopPageContainer = styled.div`  
     display: flex;
     justify-content: center;
-    backgound-color: #FBFBFB;
 
   @media (max-width: 768px) {
     display: none;

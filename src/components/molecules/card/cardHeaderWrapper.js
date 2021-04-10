@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const HeaderWrapper = styled.div`   
+const CardHeaderWrapper = styled.div`   
 
     position: relative;    
     display: flex;
@@ -13,11 +12,4 @@ const HeaderWrapper = styled.div`
     background-color: transparent;   
 
 `
-
-const CardHeaderWrapper = ({ children }) => (
-   
-        <HeaderWrapper>
-            {children}
-        </HeaderWrapper>          
-)
 export default CardHeaderWrapper;

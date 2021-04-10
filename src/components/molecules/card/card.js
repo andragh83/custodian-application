@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import CheckboxInput from '../../atoms/checkboxInput';
-import Arrow from '../../atoms/arrow';
+import CheckboxInput from '../../atoms/inputs/chekbox/checkboxInput';
+import Arrow from '../../atoms/arrow/arrow';
 import CardHeaderWrapper from './cardHeaderWrapper';
 import CardBodyWrapper from './cardBodyWrapper';
 import CardFooterWrapper from './cardFooterWrapper';
-import Button from '../../atoms/buttons';
+import Button from '../../atoms/buttons/buttons';
+import Title from '../../atoms/typography/title';
+import Paragraph from '../../atoms/typography/paragraph';
 import archiveIcon from '../../../assets/icons/archive.svg';
 import reminderIcon from '../../../assets/icons/reminder.svg';
 
@@ -41,22 +43,26 @@ const Card = ({ title, body, isComplete, onChange, archive, isArchived, reminder
         </CardHeaderWrapper>
         
         <CardBodyWrapper>
-            <div className="title">{title}</div>
-            <div className="body">{body}</div>
+            <Title>
+                {title}
+            </Title>
+            <Paragraph>
+                {body}
+            </Paragraph>
         </CardBodyWrapper>
 
         <CardFooterWrapper>
             {
                 !isArchived ?
-                <Button theme='iconLight' icon={archiveIcon} onClick = {archive}>
+                <Button variant='iconLight' icon={archiveIcon} onClick = {archive}>
                     Archive the task
                 </Button>
                 :
-                <Button theme='dark' icon={archiveIcon} onClick = {archive}>
+                <Button variant='dark' icon={archiveIcon} onClick = {archive}>
                     Archived
                 </Button>
             }            
-            <Button theme='iconLight' icon={reminderIcon} onClick = {reminder}>
+            <Button variant='iconLight' icon={reminderIcon} onClick = {reminder}>
                 set a reminder
             </Button>
         </CardFooterWrapper>
