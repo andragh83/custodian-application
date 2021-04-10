@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const ArrowStyle = styled.i`   
+const Arrow = styled.div`   
 
     margin-top: 10px;
     width: 0.5em;
@@ -11,8 +10,4 @@ const ArrowStyle = styled.i`
     transform: rotate(45deg);
 
 `
-const Arrow = () => (
-    <ArrowStyle></ArrowStyle>
-)
-
 export default Arrow;

@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const GridWrapper = styled.div`   
+const GridWrapperStyle = styled.div`   
     
     margin-top: 20px;
     width: auto;
@@ -11,5 +12,11 @@ const GridWrapper = styled.div`
     grid-row-gap: 60px;
 
 `
+
+const GridWrapper = ({ children }) => (
+    <GridWrapperStyle>
+        {children}
+    </GridWrapperStyle>
+)
 
 export default GridWrapper;
