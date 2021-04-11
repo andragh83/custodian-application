@@ -5,7 +5,7 @@ import {
   archiveTask, 
   toggleCompletedTask, 
   showAllTasks,
-  showTasksByArchived,
+  displayTasksByCriteria,
   createTask, 
   sortTasksByTitle
 } from "../../redux/actions";
@@ -36,7 +36,7 @@ const actionCreators = {
   archiveTask,
   toggleCompletedTask, 
   showAllTasks,
-  showTasksByArchived,
+  displayTasksByCriteria,
   createTask,
   sortTasksByTitle
 }
@@ -55,7 +55,7 @@ class Home extends React.Component {
       createTask,
       displayTasks,
       showAllTasks,
-      showTasksByArchived,
+      displayTasksByCriteria,
       sortTasksByTitle
     } = this.props;
 
@@ -69,8 +69,8 @@ class Home extends React.Component {
         <HeaderImage src={image}/>
         <Controls 
           createTask={createTask}
-          showCurrentTasks={() => showTasksByArchived('archived', false)}
-          showArchivedTasks={() => showTasksByArchived('archived', true)}
+          showCurrentTasks={() => displayTasksByCriteria('archived', false)}
+          showArchivedTasks={() => displayTasksByCriteria('archived', true)}
           showAll={showAllTasks}
           sortTasksByTitle={sortTasksByTitle}
         />
