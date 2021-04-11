@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { 
   archiveTask, 
-  toggleTask, 
-  setDisplayCriteria,
+  toggleCompletedTask, 
+  showAllTasks,
+  showTasksByArchived,
   createTask, 
 } from "../../redux/actions";
 import PageWrapper from "../templates/pageWrapper";
@@ -32,13 +33,14 @@ const DesktopPageContainer = styled.div`
 
 const actionCreators = {
   archiveTask,
-  toggleTask,
+  toggleCompletedTask, 
+  showAllTasks,
+  showTasksByArchived,
   createTask,
-  setDisplayCriteria,
 }
 
 const mapStateToProps = state => {
-  return { tasks: state.tasks, displayCriteria: state.displayTasks.displayCriteria };
+  return { tasks: state.tasks, displayTasks: state.displayTasks };
 };
 
 class Home extends React.Component {
@@ -46,18 +48,17 @@ class Home extends React.Component {
 
     const { 
       archiveTask, 
-      toggleTask, 
+      toggleCompletedTask, 
       tasks, 
-      setDisplayCriteria,
       createTask,
-      displayCriteria
+      displayTasks,
+      showAllTasks,
+      showTasksByArchived,
     } = this.props;
 
-    const filteredTasks = displayCriteria === "current" ?
-                            tasks.filter(task => task.archived === false) 
-                        : displayCriteria === "archived" ?
-                            tasks.filter(task => task.archived === true) 
-                        : tasks;
+
+    const tasksToDisplay = !displayTasks.setDisplayCriteria ? tasks 
+                            : tasks.filter(task => task[displayTasks.criteria] === displayTasks.criteriaValue)
 
     return (
     <DesktopPageContainer>    
@@ -65,17 +66,17 @@ class Home extends React.Component {
         <HeaderImage src={image}/>
         <Controls 
           createTask={createTask}
-          showCurrentTasks={() => setDisplayCriteria("current")}
-          showArchivedTasks={() => setDisplayCriteria("archived")}
-          showAll={() => setDisplayCriteria("")}
+          showCurrentTasks={() => showTasksByArchived('archived', false)}
+          showArchivedTasks={() => showTasksByArchived('archived', true)}
+          showAll={showAllTasks}
         />
         <GridWrapper>
             { 
-            filteredTasks.map(task => 
+            tasksToDisplay.map(task => 
               <Card 
                 key={task.id}
                 isComplete = {task.completed}
-                onChange = {() => toggleTask(task.id)}
+                onChange = {() => toggleCompletedTask(task.id)}
                 title = {task.title}
                 body = {task.body}
                 archive = {() => archiveTask(task.id)}

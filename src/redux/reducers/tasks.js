@@ -1,6 +1,6 @@
 import { 
     ARCHIVE_TASK, 
-    TOGGLE_TASK, 
+    TOGGLE_TASK_IS_COMPLETE, 
     CREATE_TASK,
   } from '../actions/types'
 
@@ -54,7 +54,7 @@ export default function tasks(state = initialState, action) {
                 return task
             })
         
-        case TOGGLE_TASK:
+        case TOGGLE_TASK_IS_COMPLETE:
         return state.map((task) => {
             if (task.id === action.id) {
                 task.completed = !task.completed
