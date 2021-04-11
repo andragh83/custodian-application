@@ -1,6 +1,7 @@
 import { 
     ARCHIVE_TASK, 
     TOGGLE_TASK_IS_COMPLETE, 
+    SORT_TASKS_BY_TITLE,
     CREATE_TASK,
   } from '../actions/types'
 
@@ -53,6 +54,11 @@ export default function tasks(state = initialState, action) {
 
                 return task
             })
+
+        case SORT_TASKS_BY_TITLE: {
+            const sortedTaskTitles = state.map(task => task.title).sort();
+            return sortedTaskTitles.map(taskTitle => state.filter(task => taskTitle === task.title )[0])
+        }
         
         case TOGGLE_TASK_IS_COMPLETE:
         return state.map((task) => {

@@ -6,7 +6,7 @@ import Button from '../../atoms/buttons/buttons';
 const LeftSide = styled.div`   
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 5px;
     
 `
 
@@ -15,18 +15,21 @@ const RightSide = styled.div`
     justify-content: flex-end;
 `
 
-const Controls = ( { createTask, showCurrentTasks, showArchivedTasks, showAll }) => (
+const Controls = ( { createTask, showCurrentTasks, showArchivedTasks, showAll, sortTasksByTitle }) => (
     <ControlsWrapper>
         <LeftSide>
             <Button variant='dark' onClick={showAll}>
-                Show all
+                    Show All
             </Button>
-            <Button variant='light' onClick={showCurrentTasks}>
-                Current tasks
+            <Button variant='light' onClick={sortTasksByTitle}>
+                    Sort
+            </Button>
+            <Button variant='standard' onClick={showCurrentTasks}>
+                Current
             </Button>
             <Button variant='standard' onClick={showArchivedTasks}>
-                Archived tasks
-            </Button>            
+                Archived
+            </Button>                         
         </LeftSide>
         <RightSide>        
             <Button variant='dark' onClick={createTask}>

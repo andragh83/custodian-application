@@ -7,6 +7,7 @@ import {
   showAllTasks,
   showTasksByArchived,
   createTask, 
+  sortTasksByTitle
 } from "../../redux/actions";
 import PageWrapper from "../templates/pageWrapper";
 import GridWrapper from "../templates/gridWrapper";
@@ -37,6 +38,7 @@ const actionCreators = {
   showAllTasks,
   showTasksByArchived,
   createTask,
+  sortTasksByTitle
 }
 
 const mapStateToProps = state => {
@@ -54,6 +56,7 @@ class Home extends React.Component {
       displayTasks,
       showAllTasks,
       showTasksByArchived,
+      sortTasksByTitle
     } = this.props;
 
 
@@ -69,6 +72,7 @@ class Home extends React.Component {
           showCurrentTasks={() => showTasksByArchived('archived', false)}
           showArchivedTasks={() => showTasksByArchived('archived', true)}
           showAll={showAllTasks}
+          sortTasksByTitle={sortTasksByTitle}
         />
         <GridWrapper>
             { 

@@ -22,6 +22,7 @@ const StandardButton = styled.button`
     }
 
 `
+
 const DarkButton = styled(StandardButton)`   
                 
     background-color: rgb(32, 147, 152);   
